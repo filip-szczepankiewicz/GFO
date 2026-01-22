@@ -3,4 +3,6 @@ A tool for diffusion MRI.  Implements methods for designing rotation sets that e
 
 Tested on Matlab 2025b, requires 'Optimization Toolbox' and 'Parallel Computing Toolbox'. 
 
+To get started, look at 'example.m'.
+
 Usage is free, but please cite the paper.
