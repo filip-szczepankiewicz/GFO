@@ -16,10 +16,10 @@ In diffusion MRI and related techniques, experiments are repeated across many or
 
 **GFO** addresses this by optimizing a set of N rotations to be as orientation-independent (isotropic) as possible. It supports two families of cost functions:
 
-- **GFO (Generalized Frame Optimization)** — a band-limited, spectral cost on SO(3), based on Chebyshev polynomials and Sobolev-type band weights. This directly minimizes the variance of the frame energy across orientations.
+- **GFO (Geometric Filter Optimization)** — a band-limited, spectral cost on SO(3), based on Chebyshev polynomials and Sobolev-type band weights. This directly minimizes the variance of the frame energy across orientations.
 - **ESR (Electrostatic Repulsion)** — a Coulomb-like repulsion energy on SO(3) (or S²), which spreads rotations by maximizing pairwise geodesic distances.
 
-Both families support a **D₂-symmetry** variant (suffix `D2`), appropriate for acquisition schemes where each rotation and its dihedral equivalents represent the same physical experiment (e.g., symmetric b-tensors such as linear or planar tensor encoding).
+Both families support a **D₂-symmetry** variant (suffix `D2`), appropriate for acquisition schemes where each rotation and its dihedral equivalents represent the same physical experiment.
 
 ---
 
@@ -39,10 +39,10 @@ GFO/
 ├── +library/                  % Pre-computed and cached rotation sets
 │   ├── loadSet.m              % Load a cached set by (n, mode)
 │   ├── makeSet.m              % Compute and cache a set by (n, mode)
-│   ├── GFOD2_NNNN             % Pre-computed GFO-D2 sets (binary)
+│   ├── GFOD2_NNNN             % Pre-computed GFO-D2 sets
 │   ├── ESRD2_NNNN             % Pre-computed ESR-D2 sets
-│   ├── ESRS2_NNNN             % Pre-computed ESR-S2 (LTE direction) sets
-│   └── StD_NNNN               % Pre-computed standard direction sets
+│   ├── ESRS2_NNNN             % Pre-computed ESR-S2 sets
+│   └── StD_NNNN               % Pre-computed spherical t-design sets
 └── +util/                     % Internal utility functions
 │   ├── sobolev.m              % Sobolev spectral weights
 │   ├── hopf_kronecker.m       % Deterministic S³ initializer
@@ -71,10 +71,9 @@ GFO/
 
 ---
 
-## Acquisition modes
+## Optimization modes
 
-GFO = Geometric Filter Optimization;
-ESR = Electrostatic Repulsion
+The following modes are available in this framework.
 
 | Mode     | Description                                                                 |
 |----------|-----------------------------------------------------------------------------|
@@ -83,6 +82,9 @@ ESR = Electrostatic Repulsion
 | `ESRD2`  | ESR on SO(3) with D2 symmetry.                                              |
 | `ESR`    | ESR on SO(3) without additional symmetry constraint.                        |
 | `ESRS2`  | ESR on S² (directions). Use for axi-symmetric encoding only.                |
+
+GFO = Geometric Filter Optimization;
+ESR = Electrostatic Repulsion
 
 ---
 
@@ -104,7 +106,7 @@ rotMats = GFO_generateSet(n, 'GFOD2');
 R = library.loadSet(15, 'GFOD2');
 ```
 
-### Save a newly computed set to the library cache
+### Optimize and write a set to the library
 
 ```matlab
 library.makeSet(15, 'GFOD2');  % Skips if already exists
@@ -114,7 +116,7 @@ library.makeSet(15, 'GFOD2');  % Skips if already exists
 
 ## Detailed example with CV evaluation
 
-The following mirrors `example.m` and illustrates the full workflow including isotropy evaluation.
+This follows `example.m` and illustrates the full workflow including evaluation.
 
 ```matlab
 clear
