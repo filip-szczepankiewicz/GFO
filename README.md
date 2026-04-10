@@ -3,7 +3,10 @@
 A MATLAB toolbox for generating optimally isotropic sets of rotations in SO(3), with applications to axi-symmetric and triaxial diffusion MRI and other orientation-sensitive experiments.
 
 Repository based on the paper:
-[Beyond directions: Symmetry-aware rotation sets for triaxial diffusion encoding by geometric filter optimization](https://arxiv.org/abs/2601.14970), by Sune Nørhøj Jespersen and Filip Szczepankiewicz
+
+[Beyond directions: Symmetry-aware rotation sets for triaxial diffusion encoding by geometric filter optimization](https://arxiv.org/abs/2601.14970), 
+
+by Sune Nørhøj Jespersen and Filip Szczepankiewicz
 
 ---
 
