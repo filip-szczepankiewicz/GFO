@@ -16,7 +16,7 @@ In diffusion MRI and related techniques, experiments are repeated across many or
 
 **GFO** addresses this by optimizing a set of N rotations to be as orientation-independent (isotropic) as possible. It supports two families of cost functions:
 
-- **GFO (Generalized Frame Optimization)** — a band-limited, spectral cost on SO(3), based on Chebyshev polynomials and Sobolev-type band weights. This directly minimizes the variance of the frame energy across orientations.
+- **GFO (Geometric Filter Optimization)** — a band-limited, spectral cost on SO(3), based on Chebyshev polynomials and Sobolev-type band weights. This directly minimizes the variance of the frame energy across orientations.
 - **ESR (Electrostatic Repulsion)** — a Coulomb-like repulsion energy on SO(3) (or S²), which spreads rotations by maximizing pairwise geodesic distances.
 
 Both families support a **D₂-symmetry** variant (suffix `D2`), appropriate for acquisition schemes where each rotation and its dihedral equivalents represent the same physical experiment (e.g., symmetric b-tensors such as linear or planar tensor encoding).
