@@ -32,6 +32,15 @@ switch mode
             rotMats(:,:,i) = util.rotVec2Vec([0 0 1], u(i,:));
         end
 
+    case {'ESRS2f'} % Fast variant of ESRS2
+        u = isotropic_S2_fast2(nRot);
+
+        rotMats = zeros(3,3,nRot);
+
+        for i = 1:nRot
+            rotMats(:,:,i) = util.rotVec2Vec([0 0 1], u(i,:));
+        end
+
     case {'ESR', 'ESRD2', 'GFO', 'GFOD2'}
         lvals = 0:Lmax;
         Vdeg = (2*lvals+1).*util.sobolev(kappa,s,Lmax).^2;
