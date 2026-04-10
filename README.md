@@ -177,11 +177,11 @@ After optimization, quaternions are row-normalized to enforce unit length and th
 
 The GFO cost is controlled by three hyperparameters with sensible defaults:
 
-| Parameter | Default SO(3) | Default S2 | Description |
+| Parameter | Default SO(3) | Default S² | Description |
 |-----------|---------------|------------|-------------|
 | `Lmax`    | 8             | 8          | Maximum spherical harmonic band; higher = more precise spectral control |
-| `s`       | 8             | 5          | Sobolev smoothness exponent; larger = faster high-frequency decay |
-| `kappa`   | 7             | 4          | Sobolev scale parameter; larger = more weight on higher bands |
+| `s`       | 8             | 5          | Sobolev smoothness exponent; larger = faster high-frequency decay       |
+| `kappa`   | 7             | 4          | Sobolev scale parameter; larger = more weight on higher bands           |
 
 These defaults work well for the range of N relevant to typical diffusion MRI experiments (N ≈ 6–60). They can be tuned if the optimization does not converge or the CV is unexpectedly high.
 
