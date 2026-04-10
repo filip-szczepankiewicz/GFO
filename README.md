@@ -106,7 +106,7 @@ rotMats = GFO_generateSet(n, 'GFOD2');
 R = library.loadSet(15, 'GFOD2');
 ```
 
-### Save a newly computed set to the library cache
+### Optimize and write a set to the library
 
 ```matlab
 library.makeSet(15, 'GFOD2');  % Skips if already exists
@@ -116,7 +116,7 @@ library.makeSet(15, 'GFOD2');  % Skips if already exists
 
 ## Detailed example with CV evaluation
 
-The following mirrors `example.m` and illustrates the full workflow including isotropy evaluation.
+This follows `example.m` and illustrates the full workflow including evaluation.
 
 ```matlab
 clear
