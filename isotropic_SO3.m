@@ -65,9 +65,9 @@ if strcmp(cost,"GFO")
 elseif strcmp(cost,"GFOD2")
     % --- Objective handle (numeric, bounds-only; normalizes inside) ---
     obj = @(x) GFOSO3_cost_fct_D2(x,N,Lmax,bandWeight);
-elseif strcmp(cost,"electro")
+elseif strcmp(cost,"electro") || strcmp(cost, 'ESR')
     obj = @(x) electroSO3_cost_fct(x,N,false); %no addpen
-elseif strcmp(cost,"electroD2")
+elseif strcmp(cost,"electroD2") || strcmp(cost, 'ESRD2')
     obj = @(x) electroSO3_cost_fct_D2(x,N);
 else
     error('Invalid cost function specified. Choose either "GFO", "GFOD2" or "electro" or "electroD2"');
