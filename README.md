@@ -39,10 +39,10 @@ GFO/
 ├── +library/                  % Pre-computed and cached rotation sets
 │   ├── loadSet.m              % Load a cached set by (n, mode)
 │   ├── makeSet.m              % Compute and cache a set by (n, mode)
-│   ├── GFOD2_NNNN             % Pre-computed GFO-D2 sets (binary)
+│   ├── GFOD2_NNNN             % Pre-computed GFO-D2 sets
 │   ├── ESRD2_NNNN             % Pre-computed ESR-D2 sets
-│   ├── ESRS2_NNNN             % Pre-computed ESR-S2 (LTE direction) sets
-│   └── StD_NNNN               % Pre-computed standard direction sets
+│   ├── ESRS2_NNNN             % Pre-computed ESR-S2 sets
+│   └── StD_NNNN               % Pre-computed spherical t-design sets
 └── +util/                     % Internal utility functions
 │   ├── sobolev.m              % Sobolev spectral weights
 │   ├── hopf_kronecker.m       % Deterministic S³ initializer
@@ -73,9 +73,6 @@ GFO/
 
 ## Acquisition modes
 
-GFO = Geometric Filter Optimization;
-ESR = Electrostatic Repulsion
-
 | Mode     | Description                                                                 |
 |----------|-----------------------------------------------------------------------------|
 | `GFOD2`  | GFO on SO(3) with D2 symmetry. **Recommended general-purpose choice.**      |
@@ -83,6 +80,9 @@ ESR = Electrostatic Repulsion
 | `ESRD2`  | ESR on SO(3) with D2 symmetry.                                              |
 | `ESR`    | ESR on SO(3) without additional symmetry constraint.                        |
 | `ESRS2`  | ESR on S² (directions). Use for axi-symmetric encoding only.                |
+
+GFO = Geometric Filter Optimization;
+ESR = Electrostatic Repulsion
 
 ---
 
