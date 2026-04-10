@@ -71,7 +71,9 @@ GFO/
 
 ---
 
-## Acquisition modes
+## Optimization modes
+
+The following modes are available in this framework.
 
 | Mode     | Description                                                                 |
 |----------|-----------------------------------------------------------------------------|
