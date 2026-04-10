@@ -173,7 +173,7 @@ end
 
 fix.figure
 
-fix.figure.save('fig_cv_allD_v6', '', [6 4], 600)
+fix.figure.save('fig_cv_allD_v9', '', [6 4], 600)
 
 
 %% Is GFO always best
@@ -241,7 +241,7 @@ axis off
 axis([-1 1 -1 1 -1 1]*1.3)
 
 fix.subplot(pp, 2)
-plot_gdirs([vg; -vg], abs([vg; -vg]).^2/1.2, 0, 0, [.8 .8 .9])
+plot_gdirs([vg; -vg], abs([vg; -vg]).^2/1.2, 0, 0, sqrt([61 125 158]/255)*0.95)
 text(0, 1.2, 'GFO', 'FontName', 'times', 'HorizontalAlignment','center')
 axis off
 axis([-1 1 -1 1 -1 1]*1.3)
