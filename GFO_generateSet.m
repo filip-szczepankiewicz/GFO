@@ -1,39 +1,19 @@
-function rotMats = GFO_generateSet(nRot, mode, s, kappa, Lmax)
-% function rotMats = GFO_generateSet(nRot, mode, s, kappa, Lmax)
+function rotMats = GFO_generateSet(nRot, mode, Lmax, s, kappa)
+% function rotMats = GFO_generateSet(nRot, mode, Lmax, s, kappa)
 
 if nargin < 2
     mode = 'GFOD2';
 end
 
 if nargin < 3
-    s = 8;
-    kappa = 7;
-    Lmax = 8;
+    [Lmax, s, kappa] = this_getDefault(mode);
 end
 
-% If multiple sets are requested, call the function multiple times
-if numel(nRot)>1
-    for i = 1:numel(nRot)
-        rotMats(i).mode = mode;
-        rotMats(i).nRot = nRot(i);
-        rotMats(i).rotMats = GFO_generateSet(nRot(i), mode, s, kappa, Lmax);
-        disp(['Optimized set with n = ' num2str(nRot(i)) ' rotations.'])
-    end
-    return
-end
 
 switch mode
-    case {'ESRS2'}
-        u = isotropic_S2(nRot);
-
-        rotMats = zeros(3,3,nRot);
-
-        for i = 1:nRot
-            rotMats(:,:,i) = util.rotVec2Vec([0 0 1], u(i,:));
-        end
-
-    case {'ESRS2f'} % Fast variant of ESRS2
-        u = isotropic_S2_fast2(nRot);
+    case {'ESRS2', 'GFOS2'}
+        Vdeg = util.sobolev(kappa,s,Lmax);
+        u = isotropic_S2(nRot, mode, Lmax, Vdeg);
 
         rotMats = zeros(3,3,nRot);
 
@@ -52,4 +32,22 @@ switch mode
 
     otherwise
         error('Mode not recognized!')
+end
+end
+
+
+% Function to generate default hyperparameters for optimization
+function [Lmax, s, kappa] = this_getDefault(mode)
+
+switch mode
+    case {'ESRS2', 'GFOS2'}
+        Lmax = 8; s = 5; kappa = 4;
+
+    case {'ESR', 'ESRD2', 'GFO', 'GFOD2'}
+        Lmax = 8; s = 8; kappa = 7;
+
+    otherwise
+        error('Mode not recognized!')
+end
+
 end
