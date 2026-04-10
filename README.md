@@ -73,13 +73,16 @@ GFO/
 
 ## Acquisition modes
 
+GFO = Geometric Filter Optimization;
+ESR = Electrostatic Repulsion
+
 | Mode     | Description                                                                 |
 |----------|-----------------------------------------------------------------------------|
-| `GFOD2`  | GFO cost with D2 symmetry. **Recommended general-purpose choice.**          |
-| `GFO`    | GFO cost without symmetry constraint.                                       |
-| `ESRD2`  | Electrostatic repulsion on SO(3) with D2 symmetry.                          |
-| `ESR`    | Electrostatic repulsion on SO(3)             .                              |
-| `ESRS2`  | Electrostatic repulsion on S² (directions only). Use for axi-symmetric encoding only. |
+| `GFOD2`  | GFO on SO(3) with D2 symmetry. **Recommended general-purpose choice.**      |
+| `GFO`    | GFO on SO(3) without additional symmetry constraint.                        |
+| `ESRD2`  | ESR on SO(3) with D2 symmetry.                                              |
+| `ESR`    | ESR on SO(3) without additional symmetry constraint.                        |
+| `ESRS2`  | ESR on S² (directions). Use for axi-symmetric encoding only.                |
 
 ---
 
