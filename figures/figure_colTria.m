@@ -17,9 +17,9 @@ clf
 btensor_triangle(T1, 'cmap', cm, 'showCornerLabels', 0)
 clim([0 1])
 
-fix.colorbar.position([], [1.15 1 .5 .3], [0 .5 0 0])
+fix.colorbar.position([], [1 1 .3 .3], [0.55 0 0 0])
 
 fix.plot.axis
 fix.figure
 
-% fix.figure.save('tria', '', [6 6], 600)
+fix.figure.save('tria', '', [6 6], 600)

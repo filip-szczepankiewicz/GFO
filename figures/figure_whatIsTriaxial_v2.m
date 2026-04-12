@@ -6,6 +6,9 @@ clear
 nD = 30;
 nR = 1600;
 
+% nD = 15;
+% nR = 100;
+
 dspace = linspace(0,2,nD);
 
 [d1,d2] = meshgrid(dspace,dspace);
@@ -155,12 +158,19 @@ for i = 1:6
 
     ind = round(fi(i)*(size(B,1)-1))+1;
 
-    tmp = diag(B(ind, [3 2 1])+0.1);
+    lam = B(ind, [3 2 1])+0.05;
+    e = lam;
+    tmp = diag(lam);
+
+    el = 1-8*(e(:,1)-e(:,2)).*(e(:,2)-e(:,3))./(sum(e,2).^2);
+
+    el = (el).^1.5;
+
 
     fix.subplot(p2, i)
 
     fix.plot.superQuadratic(tmp, 'col', [1 1 1]*0.5, 'level', 1, ...
-        'eps1', el(i), 'eps2', el(i))
+        'eps1', el, 'eps2', el)
 
     title ''
     axis off
@@ -234,14 +244,14 @@ pp.nr = 2;
 pp.nc = 1;
 
 fix.subplot(pp, 1)
-plot_gdirs([vx; -vx], abs([vx; -vx]).^2/1.2)
+plot_gdirs([vx; -vx], abs([vx; -vx]).^2/1.2, 0, 0, [.8 .8 .8])
 
 text(0, 1.2, 'ESR 𝕊^2-LTE', 'FontName', 'times', 'HorizontalAlignment','center')
 axis off
 axis([-1 1 -1 1 -1 1]*1.3)
 
 fix.subplot(pp, 2)
-plot_gdirs([vg; -vg], abs([vg; -vg]).^2/1.2, 0, 0, sqrt([61 125 158]/255)*0.95)
+plot_gdirs([vg; -vg], abs([vg; -vg]).^2/1.2, 0, 0, [.7 .8 .9])
 text(0, 1.2, 'GFO', 'FontName', 'times', 'HorizontalAlignment','center')
 axis off
 axis([-1 1 -1 1 -1 1]*1.3)

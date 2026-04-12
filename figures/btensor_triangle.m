@@ -82,7 +82,7 @@ plot(ax, tx, ty, 'k--', 'LineWidth', 0.5);
 % Colormap / colorbar
 colormap(ax, opts.cmap);
 if ~isempty(opts.clim), clim(ax, opts.clim); end
-if opts.showColorbar,   colorbar(ax);         end
+if opts.showColorbar,   colorbar(ax, 'north');         end
 
 % Corner labels
 if opts.showCornerLabels

@@ -1,12 +1,14 @@
 % This code requires the fix matlab repository
 % https://github.com/filip-szczepankiewicz/fix_matlab
 
+% ESRS2 LTE is best for N = 6, 7, 11, 22, and for PTE it is N = 6 and 7
+
 clear
 
-n = [6:1:55];
+n = [6:1:64];
 
-nD = 15;
-nR = 600;
+nD = 30;
+nR = 1600;
 
 dspace = linspace(0,2,nD);
 
