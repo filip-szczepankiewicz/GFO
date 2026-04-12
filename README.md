@@ -12,7 +12,7 @@ by Sune Nørhøj Jespersen and Filip Szczepankiewicz
 
 ## Overview
 
-In diffusion MRI and related techniques, experiments are repeated across many orientations (directions or full rotations). The quality of subsequent analyses depends critically on how *uniformly* those orientations sample the relevant space. Poor sampling leads to orientation bias: the measured powder-average signal will vary depending on how the sample happens to be placed in the scanner.
+In diffusion MRI and related techniques, experiments are repeated across many orientations (directions or full rotations). The quality of subsequent analyses depends critically on how *uniformly* those orientations sample the relevant space. Poor sampling can lead to orientation bias where the powder-averaged signal will vary depending on the orientation of the sample.
 
 **GFO** addresses this by optimizing a set of N rotations to be as orientation-independent (isotropic) as possible. It supports two families of cost functions:
 
@@ -20,6 +20,9 @@ In diffusion MRI and related techniques, experiments are repeated across many or
 - **ESR (Electrostatic Repulsion)** — a Coulomb-like repulsion energy on SO(3) (or S²), which spreads rotations by maximizing pairwise geodesic distances.
 
 Both families support a **D₂-symmetry** variant (suffix `D2`), appropriate for acquisition schemes where each rotation and its dihedral equivalents represent the same physical experiment.
+
+![Space of b-tensors and distribution of triaxial b-tensors.](figures/TriangleAndGlyphs.png)
+
 
 ---
 
